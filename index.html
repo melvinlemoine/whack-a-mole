@@ -1,20 +1,97 @@
 <!DOCTYPE html>
 
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Integration virgin template</title>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Integration virgin template</title>
-    
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="assets/css/reset.css" />
-        <link rel="stylesheet" href="assets/css/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    </head>
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
 
-<body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</body>
+  <body>
+    <header></header>
 
+    <main class="main flex-c v-centered">
+      <div class="container">
+        <div class="stats mb-3 flex-r h-centered v-space-between">
+          <button class="button is-success" onclick="launchGame()">Lancer le jeu</button>
+          <!-- <button class="button is-success" onclick="stopEngine()">Stoper le jeu</button> -->
+          <p class="stats__score">Score : <span id="score" class="bold">0</span></p>
+          <p class="stats__score">Temps restant : <span id="timer" class="bold">0</span>s</p>
+          <select class="stats__difficlty_select" id="difficultySelector">
+            <option selected disabled>Choisissez la difficulté</option>
+            <option value="easy">Facile</option>
+            <option value="normal">Modéré</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+        <div class="grid" id="grid">
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+          <div class="grid__cell"></div>
+        </div>
+      </div>
+
+      <div class="final final--success" id="success">
+        <p class="final__title">VICTOIRE</p>
+        <p class="final__score">Score : <span class="bold" id="success__score">0</span></p>
+        <p class="final__accuracy">Précision : <span class="bold" id="success__accuracy">0</span></p>
+      </div>
+
+      <div class="final final--lose" id="lose">
+        <p class="final__title">perdu</p>
+        <p class="final__score">Score : <span class="bold" id="lose__score">0</span></p>
+        <p class="final__accuracy">Précision : <span class="bold" id="lose__accuracy">0</span></p>
+      </div>
+
+      <audio id="good">
+        <source src="assets/audio/good.mp3" type="audio/mpeg" />
+      </audio>
+      <audio id="bad">
+        <source src="assets/audio/bad.mp3" type="audio/mpeg" />
+      </audio>
+      <audio id="music">
+        <source src="assets/audio/music.mp3" type="audio/mpeg" loop />
+      </audio>
+      <audio id="sound--success">
+        <source src="assets/audio/success.mp3" type="audio/mpeg" />
+      </audio>
+      <audio id="sound--lose">
+        <source src="assets/audio/lose.mp3" type="audio/mpeg" />
+      </audio>
+    </main>
+    <script src="game.js"></script>
+  </body>
 </html>
