@@ -4,7 +4,7 @@ let cells = document.getElementsByClassName("grid__cell");
 let random_cell;
 let previous_cell;
 let score = 0;
-let engine;
+// let engine;
 let timer;
 let time = 10;
 let timeoutVerif;
@@ -35,18 +35,23 @@ function difficultySelector() {
   switch (difficulty) {
     case "easy":
       time = 10;
-      interval = 1500;
+      interval = 1250;
       console.log("ok easy");
       break;
     case "normal":
       time = 10;
       interval = 1000;
-      console.log("ok normal");
+      console.log("ok medium");
       break;
     case "hard":
       time = 10;
-      interval = 500;
+      interval = 750;
       console.log("ok hard");
+      break;
+    case "hell":
+      time = 10;
+      interval = 500;
+      console.log("ok hell");
       break;
     default:
       console.log("bug in difficulty switch");
@@ -79,7 +84,7 @@ function finished() {
   } else {
     defeat();
   }
-  accuracyCalculator();
+  // accuracyCalculator();
 }
 
 function defeat() {
