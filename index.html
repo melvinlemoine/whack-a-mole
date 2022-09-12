@@ -53,12 +53,17 @@
   </head>
 
   <body>
-    <header></header>
+    <!-- <header></header> -->
 
     <main class="main flex-c v-centered">
       <div class="container">
         <div class="stats mb-3 flex-r h-centered v-space-between">
-          <button class="button is-success" onclick="launchGame()">Lancer le jeu</button>
+          <button class="button has-icon is-success is-small" onclick="launchCountDown()">
+            <span class="icon">
+              <i class="fa-solid fa-play"></i>
+            </span>
+            Lancer&nbsp;le&nbsp;jeu
+          </button>
           <!-- <button class="button is-success" onclick="stopEngine()">Stoper le jeu</button> -->
           <p class="stats__score">Score : <span id="score" class="bold">0</span></p>
           <p class="stats__score">Temps restant : <span id="timer" class="bold">0</span>s</p>
