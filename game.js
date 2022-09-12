@@ -148,6 +148,8 @@ function nextCell() {
 function badCatch() {
   //   console.log("nooo");
   updateScore("remove", 1);
+  bad.pause();
+  bad.currentTime = 0;
   bad.play();
   // nextCell();
 }
@@ -157,6 +159,8 @@ $(".grid__cell").on("click", function () {
     // console.log("CATCH IT !");
     clearTimeout(timeoutVerif);
     nextCell();
+    good.pause();
+    good.currentTime = 0;
     good.play();
     touchclick++;
     updateScore("add", 1);
