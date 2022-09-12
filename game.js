@@ -59,6 +59,30 @@ function difficultySelector() {
   }
 }
 
+function closeCountDown() {
+  $("#countdown")[0].style.display = "none";
+}
+
+function launchCountDown() {
+  $("#countdown")[0].style.display = "flex";
+  $(".countdown__number--3")[0].style.display = "flex";
+  let countdown__number = 3;
+  document.getElementById("timer").innerText = parseFloat(time.toFixed(1));
+  let countddown_interval = setInterval(function () {
+    if (countdown__number == 1) {
+      console.log("0 !");
+      clearInterval(countddown_interval);
+
+      closeCountDown();
+      launchGame();
+    } else {
+      $(".countdown__number--" + countdown__number)[0].style.display = "none";
+      countdown__number--;
+      $(".countdown__number--" + countdown__number)[0].style.display = "flex";
+    }
+  }, 1000);
+}
+
 function launchTimer(time) {
   time = time;
   document.getElementById("timer").innerText = parseFloat(time.toFixed(1));
