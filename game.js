@@ -63,7 +63,15 @@ function closeCountDown() {
   $("#countdown")[0].style.display = "none";
 }
 
+function disableLaunchButton() {
+  $("#launchButton").addClass("disable");
+}
+function enableLaunchButton() {
+  $("#launchButton").removeClass("disable");
+}
+
 function launchCountDown() {
+  disableLaunchButton();
   $("#countdown")[0].style.display = "flex";
   $(".countdown__number--3")[0].style.display = "flex";
   let countdown__number = 3;
@@ -112,12 +120,14 @@ function finished() {
 }
 
 function defeat() {
+  enableLaunchButton();
   lose.play();
   document.getElementById("lose").style.display = "flex";
   document.getElementById("lose__score").innerText = score;
   document.getElementById("lose__accuracy").innerText = accuracyCalculator();
 }
 function victory() {
+  enableLaunchButton();
   success.play();
   document.getElementById("success").style.display = "flex";
   document.getElementById("success__score").innerText = score;
