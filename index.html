@@ -3,12 +3,41 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Integration virgin template</title>
+    <title>Whack a mole</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="icon" href="assets/images/favicon.png" />
+
+    <!-- OPEN GRAPH & SEO -->
+    <meta name="title" content="Whack a mole | Play the game" />
+    <meta property="og:site_name" content="Whack a mole" />
+    <meta property="og:url" content="https://games.melvin.studio/whack-a-mole/" />
+
+    <meta property="og:type" content="website" />
+
+    <meta name="description" content="Play the whack a mole game now ! There are no moles, but it's still funny !" />
+    <meta name="keywords" content="game whack a mole play speed accuracy" />
+    <meta name="author" content="Melvin Lemoine" />
+
+    <meta property="og:image" content="https://games.melvin.studio/whack-a-mole/assets/images/og.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Whack a mole game Open Graph image cover" />
+    <!-- END OF OPEN GRAPH & SEO -->
+
+    <!-- <link rel="stylesheet" href="assets/css/reset.css" /> -->
+    <link rel="stylesheet" href="assets/css/amethyst.min.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <script
       src="https://code.jquery.com/jquery-3.6.1.min.js"
@@ -24,23 +53,33 @@
   </head>
 
   <body>
-    <header></header>
+    <!-- <header></header> -->
 
     <main class="main flex-c v-centered">
       <div class="container">
         <div class="stats mb-3 flex-r h-centered v-space-between">
-          <button class="button is-success" onclick="launchGame()">Lancer le jeu</button>
+          <button class="button has-icon is-success is-small" id="launchButton" onclick="launchCountDown()">
+            <span class="icon">
+              <i class="fa-solid fa-play"></i>
+            </span>
+            Lancer&nbsp;le&nbsp;jeu
+          </button>
           <!-- <button class="button is-success" onclick="stopEngine()">Stoper le jeu</button> -->
           <p class="stats__score">Score : <span id="score" class="bold">0</span></p>
           <p class="stats__score">Temps restant : <span id="timer" class="bold">0</span>s</p>
           <select class="stats__difficlty_select" id="difficultySelector">
-            <option selected disabled>Choisissez la difficulté</option>
-            <option value="easy">Facile</option>
-            <option value="normal">Modéré</option>
+            <option value="easy">Easy</option>
+            <option value="normal" selected>Medium</option>
             <option value="hard">Hard</option>
+            <option value="hell">Hell</option>
           </select>
         </div>
         <div class="grid" id="grid">
+          <div class="countdown" id="countdown">
+            <p class="countdown__number countdown__number--3">3</p>
+            <p class="countdown__number countdown__number--2">2</p>
+            <p class="countdown__number countdown__number--1">1</p>
+          </div>
           <div class="grid__cell"></div>
           <div class="grid__cell"></div>
           <div class="grid__cell"></div>

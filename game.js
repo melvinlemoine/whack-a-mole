@@ -4,7 +4,7 @@ let cells = document.getElementsByClassName("grid__cell");
 let random_cell;
 let previous_cell;
 let score = 0;
-let engine;
+// let engine;
 let timer;
 let time = 10;
 let timeoutVerif;
@@ -35,23 +35,60 @@ function difficultySelector() {
   switch (difficulty) {
     case "easy":
       time = 10;
-      interval = 1500;
+      interval = 1250;
       console.log("ok easy");
       break;
     case "normal":
       time = 10;
       interval = 1000;
-      console.log("ok normal");
+      console.log("ok medium");
       break;
     case "hard":
       time = 10;
-      interval = 500;
+      interval = 750;
       console.log("ok hard");
+      break;
+    case "hell":
+      time = 10;
+      interval = 500;
+      console.log("ok hell");
       break;
     default:
       console.log("bug in difficulty switch");
       break;
   }
+}
+
+function closeCountDown() {
+  $("#countdown")[0].style.display = "none";
+}
+
+function disableLaunchButton() {
+  $("#launchButton").addClass("disable");
+}
+function enableLaunchButton() {
+  $("#launchButton").removeClass("disable");
+}
+
+function launchCountDown() {
+  disableLaunchButton();
+  $("#countdown")[0].style.display = "flex";
+  $(".countdown__number--3")[0].style.display = "flex";
+  let countdown__number = 3;
+  document.getElementById("timer").innerText = parseFloat(time.toFixed(1));
+  let countddown_interval = setInterval(function () {
+    if (countdown__number == 1) {
+      console.log("0 !");
+      clearInterval(countddown_interval);
+
+      closeCountDown();
+      launchGame();
+    } else {
+      $(".countdown__number--" + countdown__number)[0].style.display = "none";
+      countdown__number--;
+      $(".countdown__number--" + countdown__number)[0].style.display = "flex";
+    }
+  }, 1000);
 }
 
 function launchTimer(time) {
@@ -79,16 +116,18 @@ function finished() {
   } else {
     defeat();
   }
-  accuracyCalculator();
+  // accuracyCalculator();
 }
 
 function defeat() {
+  enableLaunchButton();
   lose.play();
   document.getElementById("lose").style.display = "flex";
   document.getElementById("lose__score").innerText = score;
   document.getElementById("lose__accuracy").innerText = accuracyCalculator();
 }
 function victory() {
+  enableLaunchButton();
   success.play();
   document.getElementById("success").style.display = "flex";
   document.getElementById("success__score").innerText = score;
@@ -119,6 +158,8 @@ function nextCell() {
 function badCatch() {
   //   console.log("nooo");
   updateScore("remove", 1);
+  bad.pause();
+  bad.currentTime = 0;
   bad.play();
   // nextCell();
 }
@@ -128,6 +169,8 @@ $(".grid__cell").on("click", function () {
     // console.log("CATCH IT !");
     clearTimeout(timeoutVerif);
     nextCell();
+    good.pause();
+    good.currentTime = 0;
     good.play();
     touchclick++;
     updateScore("add", 1);
